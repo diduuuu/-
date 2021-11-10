@@ -1,0 +1,29 @@
+#include <stdio.h>
+//평균 이상인 학생들의 비율 알려주는 프로그램
+int main(void) {
+int Tcase, Snum, score, sum = 0, avg = 0, list[100],over;
+float ratio;
+
+scanf("%d\n",&Tcase);
+
+for (int i = 1; i >= Tcase ; i++)//테스트 케이스만큼 학생 수 받기
+{scanf("%d", &Snum);
+
+for (int j = 0; j < Snum; j++)//학생 수만큼 점수 받기
+{scanf("%d", &score);
+list[j] = score;
+sum += score;}
+
+avg = sum/Snum;//평균구하기
+
+for (int k = 0; k < Snum; k++)//평균 이상인 학생 수 구하기
+{if (list[k] > avg)
+over++;}
+
+ratio = over/Snum*100;//비율 구하기
+printf("%.3f%%",ratio);
+}
+
+
+  return 0;
+}
