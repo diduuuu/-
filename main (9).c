@@ -1,0 +1,36 @@
+/*2021-12-05
+골드바흐의 추측
+2보다 큰 짝수 n이 주어졌을 때, n을 두 소수의 합으로 나타내기
+두 소수의 합의 경우가 여러가지일 때(ex.10->5,5/3,7) 두 소수의 차가 가장 작은 것 하나만 출력하기(5,5)
+*/
+
+#include <stdio.h>
+int sosu(int number);
+
+int main(void) {
+
+int Tcase, num[1000000];//테스트 케이스, 테스트 숫자
+int i, j, k, a, b;//for문을 위한 변수와 함수값을 받을 변수
+
+scanf("%d",&Tcase);
+
+for (i=0; i<Tcase; i++)
+  scanf("%d",&num[i]);
+
+for (i=0; i<Tcase; i++)//두 수의 차이가 작은 절반값에서부터 대입 시작하기
+  for(j=num[i]/2; j>1; j--) {
+    a=sosu(j);
+    b=sosu(num[i]-j);
+    if (a==1)
+      if (b==1){
+        printf("%d %d\n",j ,num[i]-j);
+        break;//안걸면 모든 경우의 수 출력됨
+  }}
+  return 0;
+}
+int sosu(int number){
+  int i;
+  for (i=2; i<number; i++) if (number%i==0) break;
+  if (i==number) return 1;
+  else return 0;
+}
